@@ -24,7 +24,7 @@
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Country</td>
                     <td>
-                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:DropDownList ID="DropDownList1" runat="server" Width="81px">
                             <asp:ListItem>USA</asp:ListItem>
                             <asp:ListItem>Canada</asp:ListItem>
                             <asp:ListItem>UK</asp:ListItem>

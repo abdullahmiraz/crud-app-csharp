@@ -48,12 +48,20 @@ namespace myapp {
         }
         protected void Button2_Click(object sender, EventArgs e) {
             con.Open();
-            SqlCommand comm = new SqlCommand("update StudentInfo_Tab set StudentName = '" + TextBox2.Text + "',  Country = '" + DropDownList1.SelectedValue + "', Age = '" + double.Parse(TextBox3.Text) + "', Contact = '" + TextBox4.Text + "' where StudentID = '" + int.Parse(TextBox1.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("UPDATE StudentInfo_Tab SET StudentName = @StudentName, Country = @Country, Age = @Age, Contact = @Contact, Address = @Address WHERE StudentID = @StudentID", con);
+            comm.Parameters.AddWithValue("@StudentName", TextBox2.Text);
+            comm.Parameters.AddWithValue("@Country", DropDownList1.SelectedValue);
+            comm.Parameters.AddWithValue("@Age", double.Parse(TextBox3.Text));
+            comm.Parameters.AddWithValue("@Contact", TextBox4.Text);
+            comm.Parameters.AddWithValue("@Address", TextBox5.Text);
+            comm.Parameters.AddWithValue("@StudentID", int.Parse(TextBox1.Text));
+
             comm.ExecuteNonQuery();
             con.Close();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Updated')", true);
             LoadRecord();
         }
+
 
 
         protected void Button3_Click(object sender, EventArgs e) {
@@ -84,10 +92,11 @@ namespace myapp {
             SqlCommand comm = new SqlCommand("select * from StudentInfo_Tab where StudentID = '" + int.Parse(TextBox1.Text) + "'", con);
             SqlDataReader r = comm.ExecuteReader();
             while(r.Read()) {
-                TextBox2.Text = r.GetValue(1).ToString();
-                DropDownList1.SelectedValue = r.GetValue(2).ToString();
-                TextBox3.Text = r.GetValue(3).ToString();
-                TextBox4.Text = r.GetValue(4).ToString();
+                TextBox2.Text = r["StudentName"].ToString();
+                DropDownList1.SelectedValue = r["Country"].ToString();
+                TextBox3.Text = r["Age"].ToString();
+                TextBox4.Text = r["Contact"].ToString();
+                TextBox5.Text = r["Address"].ToString();
             }
 
         }
