@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="myapp._Default" %>
+﻿<%@ Page Title="Student Info" Language="C#" MasterPageFile="/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="myapp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div>
@@ -22,13 +22,20 @@
                 </tr>
                 <tr>
                     <td style="width: 151px">&nbsp;</td>
-                    <td style="width: 149px">Address</td>
+                    <td style="width: 149px">Country</td>
                     <td>
                         <asp:DropDownList ID="DropDownList1" runat="server">
                             <asp:ListItem>USA</asp:ListItem>
                             <asp:ListItem>Canada</asp:ListItem>
                             <asp:ListItem>UK</asp:ListItem>
                         </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 151px">&nbsp;</td>
+                    <td style="width: 149px">Address</td>
+                    <td>
+                        <asp:TextBox ID="TextBox5" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

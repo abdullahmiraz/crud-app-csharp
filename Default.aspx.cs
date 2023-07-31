@@ -32,7 +32,15 @@ namespace myapp {
         }
         protected void Button1_Click(object sender, EventArgs e) {
             con.Open();
-            SqlCommand comm = new SqlCommand("Insert into StudentInfo_Tab values('" + int.Parse(TextBox1.Text) + "','" + TextBox2.Text + "','" + DropDownList1.SelectedValue + "','" + double.Parse(TextBox3.Text) + "','" + TextBox4.Text + "')", con);
+            //SqlCommand comm = new SqlCommand("Insert into StudentInfo_Tab values('" + int.Parse(TextBox1.Text) + "','" + TextBox2.Text + "','" + DropDownList1.SelectedValue + "','" + double.Parse(TextBox3.Text) + "','" + TextBox4.Text + "','" + TextBox5.Text "')", con);
+            SqlCommand comm = new SqlCommand("INSERT INTO StudentInfo_Tab (StudentID, StudentName, Country, Age, Contact, Address) VALUES (@StudentID, @StudentName, @Country, @Age, @Contact, @Address)", con);
+            comm.Parameters.AddWithValue("@StudentID", int.Parse(TextBox1.Text));
+            comm.Parameters.AddWithValue("@StudentName", TextBox2.Text);
+            comm.Parameters.AddWithValue("@Country", DropDownList1.SelectedValue);
+            comm.Parameters.AddWithValue("@Age", double.Parse(TextBox3.Text));
+            comm.Parameters.AddWithValue("@Contact", TextBox4.Text);
+            comm.Parameters.AddWithValue("@Address", TextBox5.Text);
+
             comm.ExecuteNonQuery();
             con.Close();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Inserted')", true);
@@ -40,7 +48,7 @@ namespace myapp {
         }
         protected void Button2_Click(object sender, EventArgs e) {
             con.Open();
-            SqlCommand comm = new SqlCommand("update StudentInfo_Tab set StudentName = '" + TextBox2.Text + "',  Address = '" + DropDownList1.SelectedValue + "', Age = '" + double.Parse(TextBox3.Text) + "', Contact = '" + TextBox4.Text + "' where StudentID = '" + int.Parse(TextBox1.Text) + "'", con);
+            SqlCommand comm = new SqlCommand("update StudentInfo_Tab set StudentName = '" + TextBox2.Text + "',  Country = '" + DropDownList1.SelectedValue + "', Age = '" + double.Parse(TextBox3.Text) + "', Contact = '" + TextBox4.Text + "' where StudentID = '" + int.Parse(TextBox1.Text) + "'", con);
             comm.ExecuteNonQuery();
             con.Close();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Updated')", true);
