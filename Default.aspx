@@ -86,8 +86,6 @@
                     </td>
                 </tr>
              </table>
-            <!-- Other content here -->
-            <!-- ... your existing content ... -->
         </asp:Panel>
         
     </div>

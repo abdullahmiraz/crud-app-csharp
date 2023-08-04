@@ -7,14 +7,13 @@ using System.Web.UI.WebControls;
 namespace myapp {
     public partial class _Default : System.Web.UI.Page {
 
-        protected void Page_Load(object sender, EventArgs e) {
-            // Retrieve the password from the session variable
-            string expectedPassword = "admin"; // Replace this with your actual password
+        protected void Page_Load(object sender, EventArgs e) { 
+            string expectedPassword = "admin";  
             string storedPassword = Session["UserPassword"] as string;
 
             if (storedPassword == expectedPassword) {
-                mainContentPanel.Visible = true; // Show the main content if the password matches
-                passwordPanel.Visible = false; // Hide the password input panel
+                mainContentPanel.Visible = true; // Show  password matches
+                passwordPanel.Visible = false; // Hide the password  
             }
             else {
                 mainContentPanel.Visible = false; // Hide the main content if the password doesn't match
@@ -56,16 +55,10 @@ namespace myapp {
                 mainContentPanel.Visible = false; // Hide the main content
                 passwordPanel.Visible = true; // Show the password input panel
             }
+
         }
         protected void Button1_Click(object sender, EventArgs e) {
-            // Check if the provided password matches the expected password
-            string expectedPassword = "admin"; // Replace this with your actual password
-            string enteredPassword = passwordInput.Text.Trim();
-
-            if (enteredPassword != expectedPassword) {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Invalid password! Please enter the correct password to proceed.');", true);
-                return;
-            }
+            
             con.Open();
             //SqlCommand comm = new SqlCommand("Insert into StudentInfo_Tab values('" + int.Parse(TextBox1.Text) + "','" + TextBox2.Text + "','" + DropDownList1.SelectedValue + "','" + double.Parse(TextBox3.Text) + "','" + TextBox4.Text + "','" + TextBox5.Text "')", con);
             SqlCommand comm = new SqlCommand("INSERT INTO StudentInfo_Tab (StudentID, StudentName, Country, Age, Contact, Address) VALUES (@StudentID, @StudentName, @Country, @Age, @Contact, @Address)", con);
