@@ -4,12 +4,21 @@
     <div>
         <div style="font-size: x-large" align ="center"> Student Info Manage Form<br />
             </div>
+        <asp:Panel ID="passwordPanel" runat="server" Visible="true">
+            <div>
+                <label for="passwordInput">Password: </label>
+                <asp:TextBox ID="passwordInput" runat="server" TextMode="Password" CssClass="form-control" />
+                <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="login" CssClass="btn btn-primary" />
+            </div>
+        </asp:Panel>
+         
+        <asp:Panel ID="mainContentPanel" runat="server" Visible="false">
             <table class="w-100">
                 <tr>
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Student ID</td>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox1" runat="server" Font-Size="Medium" Width="203px"></asp:TextBox>
                         <asp:Button ID="Button5" runat="server" BackColor="#9900FF" Font-Bold="False" Font-Names="Arial Rounded MT Bold" Font-Size="Medium" ForeColor="White" OnClick="Button5_Click" Text="GET" BorderColor="White" />
                     </td>
                 </tr>
@@ -17,7 +26,7 @@
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Student Name</td>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox2" runat="server" Font-Size="Medium"  Width="203px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -35,21 +44,21 @@
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Address</td>
                     <td>
-                        <asp:TextBox ID="TextBox5" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" Font-Size="Medium"  Width="203px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Age</td>
                     <td>
-                        <asp:TextBox ID="TextBox3" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox3" runat="server" Font-Size="Medium"  Width="203px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 151px">&nbsp;</td>
                     <td style="width: 149px">Contact</td>
                     <td>
-                        <asp:TextBox ID="TextBox4" runat="server" Font-Size="Medium" OnTextChanged="TextBox1_TextChanged" Width="203px"></asp:TextBox>
+                        <asp:TextBox ID="TextBox4" runat="server" Font-Size="Medium"   Width="203px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +85,11 @@
 
                     </td>
                 </tr>
-            </table> 
+             </table>
+            <!-- Other content here -->
+            <!-- ... your existing content ... -->
+        </asp:Panel>
+        
     </div>
 
 </asp:Content>
